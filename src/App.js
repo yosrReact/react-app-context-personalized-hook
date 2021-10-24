@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import React, { useState, createContext } from "react"
 import './App.css';
 import Button from './components/Button';
+import useWindowSize from "./hooks/useWindowSize"
 const themes = {
   light: {
     foreground: "#000000",
@@ -18,7 +19,7 @@ const themes = {
 export const ThemeContext = createContext()
 
 function App() {
-
+  const size = useWindowSize()
   const [theme, setTheme] = useState(themes.light)
   
   return (
@@ -42,7 +43,9 @@ function App() {
           
           <Button />
           
-         
+          Width: {size.width}
+          <br/>
+          Height : {size.height}
         </header>
       </div>
     </ThemeContext.Provider>
